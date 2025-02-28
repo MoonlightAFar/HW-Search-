@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的信息</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 设置整个页面的背景颜色 */
+            font-family: 'Arial', sans-serif; /* 设置全局字体 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 垂直居中 */
+        }
+
+        .box {
+            background: #fff; /* 白色背景 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            border-radius: 10px; /* 圆角效果 */
+            padding: 30px;
+            width: 300px;
+            max-width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-10px); /* 鼠标悬停时的提升效果 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .ipt {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .ipt:focus {
+            border-color: #66afe9; /* 聚焦时的边框颜色 */
+            outline: none; /* 去除默认的聚焦轮廓 */
+        }
+
+        select.ipt {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY3JlZW4zMyIgZmlsbD0icmVkIj4KPHBhdGggZD0iTTEwLjgwNiw1LjQ5NzZ2OS4wOTcxN0wtMC4xOTcsMTAuODAxMSwzMC42OTQxOXY2LjQyNzMxSDEzLjY2MzExVjE0LjExNzMwNUI3LjQwNTAyNw==') no-repeat scroll right center;
+            background-size: 16px;
+            padding-right: 30px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff; /* 修改按钮背景颜色为和之前一致的蓝色 */
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* 悬停时的按钮颜色 */
+            transform: translateY(-2px); /* 鼠标悬停时的按钮提升效果 */
+        }
+
+        .btn:active {
+            background-color: #004085; /* 按钮点击时的颜色 */
+            transform: translateY(2px); /* 按钮按下时的效果 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 500px) {
+            .box {
+                padding: 20px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>您的信息</h1>
+        <form method="post">
+            <!-- 用户年龄输入框 -->
+            <input class="ipt" type="number" name="age" placeholder="年龄" required>
+            <br>
+            <!-- 用户性别选择 -->
+            <select class="ipt" name="gender" required>
+                <option value="" disabled selected>请选择性别</option> <!-- 默认选项 -->
+                <option value="male">男</option>
+                <option value="female">女</option>
+            </select>
+            <br>
+            <!-- 提交按钮 -->
+            <input class="btn" id="user-btn" type="submit" value="提交">
+        </form>
+    </div>
+
+    <script>
+        // 动态反馈：对输入框和选择框的验证反馈
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const ageInput = document.querySelector('[name="age"]');
+            const genderSelect = document.querySelector('[name="gender"]');
+            if (!ageInput.value || !genderSelect.value) {
+                event.preventDefault();
+                alert('请填写所有信息！');
+            }
+        });
+    </script>
+</body>
+</html>

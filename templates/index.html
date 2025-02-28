@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皓月搜索</title>
+    <style>
+        body {
+            background-color: #f9f9fb; /* 背景颜色：浅灰，增添清新感 */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #333; /* 标题颜色 */
+            font-size: 28px;
+        }
+
+        .box {
+            background: #ffffff; /* 白色背景 */
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1); /* 蓝色阴影 */
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.15);
+        }
+
+        .ipt {
+            padding: 12px;
+            margin-bottom: 15px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ipt:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* 悬停时更深的蓝色 */
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            background-color: #004085;
+            transform: translateY(2px);
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            color: #007bff;
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .searchbox {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f7f7fb; /* 背景色稍微与主区域区分 */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1);
+        }
+
+        .searchbox input {
+            width: calc(100% - 24px); /* 保证宽度 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 500px) {
+            .box {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .btn, .ipt {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>皓月搜索</h1>
+        <form method="post">
+            <input class="ipt" type="text" name="query" placeholder="短语查询：请输入内容" required>
+            <input class="btn" type="submit" value="搜索">
+        </form>
+
+        <div class="searchbox">
+            <p>高级搜索：</p>
+            <form method="post">
+                <input class="ipt" type="text" name="webdns" placeholder="站内搜索：输入你想找的指定网站">
+                <input class="ipt" type="text" name="wildcard" placeholder="通配查询：在这里输入通配符">
+                <input class="btn" type="submit" value="搜索">
+            </form>
+        </div>
+
+        <a href="{{ url_for('collect_info') }}">提交您的信息以优化查询</a>
+    </div>
+</body>
+</html>
+
